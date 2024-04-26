@@ -1,7 +1,9 @@
 # -Wall sholls all the warnings
 build:
-	gcc -Wall -std=c99 src/*.c -o src/main
+	gcc -Wall -std=c99 src/*.c -o renderer
+debug:
+	gcc -g -Wall -std=c99 src/*.c -o renderer
 run:
-	./src/main
+	./renderer
 clean:
-	rm ./main 
+	rm ./renderer

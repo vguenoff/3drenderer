@@ -1,10 +1,12 @@
 #include <stdio.h>
 
-int main(void) {
-  int a = 123;
-  int b = 321;
+int main() {
+  int testInteger;
 
-  printf("Hello world! %i %i\n", a, b);
+  printf("Enter an integer: ");
+  scanf("%d", &testInteger);
+
+  printf("Number = %d", testInteger);
 
   return 0;
 }
