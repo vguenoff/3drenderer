@@ -36,8 +36,47 @@ bool initialize_window(void) {
   return true;
 }
 
+void setup() {
+  // TODO
+}
+
+void proccess_input() {
+  SDL_Event event;
+  SDL_PollEvent(&event); // passing the reference to `event`
+
+  switch (event.type) {
+  case SDL_QUIT:
+    is_running = false;
+    break;
+  case SDL_KEYDOWN:
+    if (event.key.keysym.sym == SDLK_ESCAPE) {
+      is_running = false;
+    }
+  default:
+    break;
+  }
+}
+
+void update() {
+  // TODO
+}
+
+void render() {
+  SDL_SetRenderDrawColor(renderer, 0, 150, 150, 255);
+  SDL_RenderClear(renderer);
+  SDL_RenderPresent(renderer);
+}
+
 int main(void) {
   is_running = initialize_window();
+
+  setup();
+
+  while (is_running) {
+    proccess_input();
+    update();
+    render();
+  }
 
   return 0;
 }
