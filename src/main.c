@@ -5,7 +5,7 @@
 bool is_running = false;
 
 SDL_Window *window =
-    NULL; // pointer to specific place in memory that contains  SDL_Window
+    NULL; // pointer to specific place in memory that contains SDL_Window
 SDL_Renderer *renderer = NULL; // starts as null pointer
 
 bool initialize_window(void) {
