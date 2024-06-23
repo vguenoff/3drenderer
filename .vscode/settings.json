@@ -1,3 +1,6 @@
 {
-  "cSpell.words": ["keysym", "SDLK", "WINDOWPOS"]
+  "cSpell.words": ["keysym", "SDLK", "WINDOWPOS"],
+  "files.associations": {
+    "sdl.h": "c"
+  }
 }

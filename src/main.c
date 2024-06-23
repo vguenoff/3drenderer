@@ -4,9 +4,10 @@
 
 bool is_running = false;
 
-SDL_Window *window =
-    NULL; // pointer to specific place in memory that contains SDL_Window
-SDL_Renderer *renderer = NULL; // starts as null pointer
+// pointer to specific place in memory that contains SDL_Window
+SDL_Window *window = NULL;
+// starts as null pointer
+SDL_Renderer *renderer = NULL;
 
 bool initialize_window(void) {
   // initialize sdl
@@ -49,9 +50,10 @@ void proccess_input() {
     is_running = false;
     break;
   case SDL_KEYDOWN:
-    if (event.key.keysym.sym == SDLK_ESCAPE) {
+    if (event.key.keysym.sym == SDLK_ESCAPE || event.key.keysym.sym == SDLK_q) {
       is_running = false;
     }
+    break;
   default:
     break;
   }
@@ -62,13 +64,15 @@ void update() {
 }
 
 void render() {
-  SDL_SetRenderDrawColor(renderer, 255, 100, 100, 255);
+  SDL_SetRenderDrawColor(renderer, 255, 100, 255, 255);
   SDL_RenderClear(renderer);
   SDL_RenderPresent(renderer);
 }
 
 int main(void) {
   is_running = initialize_window();
+
+  // printf("%zu\n", sizeof(int));
 
   setup();
 
