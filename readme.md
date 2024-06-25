@@ -13,3 +13,7 @@
 - `uint8_t` fixed-sized int type (guaranteed) - unsigned integer of 8 bits (1 byte = 8 bits)
 - `uint16_t`
 - `uint32_t`
+
+## Pointers
+
+- A pointer can be used to store the **memory address** of other variables.
