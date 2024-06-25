@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 #include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 
 bool is_running = false;
@@ -8,6 +9,11 @@ bool is_running = false;
 SDL_Window *window = NULL;
 // starts as null pointer
 SDL_Renderer *renderer = NULL;
+// pointer to the first position of this array of 32 bit numbers
+uint32_t *color_buffer = NULL;
+
+const int WINDOW_WIDTH = 800;
+const int WINDOW_HEIGHT = 600;
 
 bool initialize_window(void) {
   // initialize sdl
@@ -17,9 +23,8 @@ bool initialize_window(void) {
   };
 
   // crate a sdl window
-  window =
-      SDL_CreateWindow(NULL, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-                       800, 600, SDL_WINDOW_BORDERLESS);
+  window = SDL_CreateWindow(NULL, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+                            WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_BORDERLESS);
 
   if (!window) {
     fprintf(stderr, "Error creating SDL window. \n");
@@ -38,7 +43,8 @@ bool initialize_window(void) {
 }
 
 void setup() {
-  // TODO
+  // Manually allocate a certain number of bytes in the memory and casting to
+  color_buffer = (uint32_t *) malloc(sizeof(uint32_t) * WINDOW_WIDTH * WINDOW_HEIGHT);
 }
 
 void proccess_input() {
@@ -72,7 +78,7 @@ void render() {
 int main(void) {
   is_running = initialize_window();
 
-  // printf("%zu\n", sizeof(int));
+  // printf("%zu\n", sizeof(uint32_t)); // 4 bytes or 32 bits
 
   setup();
 
